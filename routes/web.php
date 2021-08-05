@@ -18,3 +18,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/payments/create', 'PaymentsController@show')->name('payments.create')->middleware('auth');
+Route::post('/payments', 'PaymentsController@store')->middleware('auth');
