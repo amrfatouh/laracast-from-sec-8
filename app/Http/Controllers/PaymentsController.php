@@ -16,7 +16,7 @@ class PaymentsController extends Controller
 
   public function store()
   {
-    request()->user()->notify(new PaymentReceived());
-    return redirect()->route('payments.create');
+    request()->user()->notify(new PaymentReceived(900));
+    return redirect()->route('notifications');
   }
 }
