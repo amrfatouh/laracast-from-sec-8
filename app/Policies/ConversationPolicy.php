@@ -22,6 +22,6 @@ class ConversationPolicy
 
   public function update(User $user, Conversation $conversation)
   {
-    return ($conversation->user->id === $user->id || $user->is_admin);
+    return ($conversation->user->id === $user->id);
   }
 }
