@@ -25,3 +25,19 @@ Route::get('/notifications', 'UserNotificationsController@show')->name('notifica
 
 Route::get('conversations', 'ConversationsController@index')->name('conversations.index');
 Route::get('conversations/{conversation}', 'ConversationsController@show')->name('conversations.show');
+
+Route::post('/bestComment/{comment}', 'ConversationBestCommentController@store')->name('bestComment.post');
+
+
+Route::get('test', function () {
+  return view('test');
+});
+
+Route::get('test2', function () {
+  $response = Gate::inspect('update', \App\Conversation::find(1));
+  if ($response->allowed()) {
+    return 'allowed';
+  } else {
+    return $response->message();
+  }
+});
