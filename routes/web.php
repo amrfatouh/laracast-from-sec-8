@@ -28,6 +28,13 @@ Route::get('conversations/{conversation}', 'ConversationsController@show')->name
 
 Route::post('/bestComment/{comment}', 'ConversationBestCommentController@store')->name('bestComment.post');
 
+Route::get('new', function () {
+  return view('new');
+});
+
+Route::get('reports', function () {
+  return 'the secret reports';
+})->middleware('can:view_reports');
 
 Route::get('test', function () {
   return view('test');

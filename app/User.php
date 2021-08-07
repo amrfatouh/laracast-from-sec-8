@@ -41,4 +41,19 @@ class User extends Authenticatable
   {
     return $this->hasMany('App\Conversation');
   }
+
+  public function roles()
+  {
+    return $this->belongsToMany(Role::class)->withTimestamps();
+  }
+
+  public function assignRole($role)
+  {
+    $this->roles()->sync($role, false);
+  }
+
+  public function abilities()
+  {
+    return $this->roles->map->abilities->flatten()->pluck('name');
+  }
 }
